@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blog Platform
+
+This is a full-stack blog platform built with Next.js, Prisma, and Clerk for authentication.
+
+## Features
+
+*   **User Authentication:** Secure sign-up and sign-in with Clerk.
+*   **Article Management:** Create, edit, and delete articles.
+*   **Rich Text Editor:** Use of a rich text editor for creating and editing articles.
+*   **Commenting System:** Users can comment on articles.
+*   **Like/Dislike System:** Users can like or dislike articles.
+*   **Search Functionality:** Search for articles by title or content.
+*   **Dashboard:** A user dashboard to manage articles.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+*   Node.js (v20 or later)
+*   npm
+*   A PostgreSQL database
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1.  **Clone the repository:**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+    ```bash
+    git clone <repository-url>
+    cd blog
+    ```
 
-## Learn More
+2.  **Install dependencies:**
 
-To learn more about Next.js, take a look at the following resources:
+    ```bash
+    npm install
+    ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3.  **Set up environment variables:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    Create a `.env.local` file in the root of the project and add the following variables:
 
-## Deploy on Vercel
+    ```
+    # Database
+    DATABASE_URL="postgresql://<user>:<password>@<host>:<port>/<database>"
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    # Clerk Authentication
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=""
+    CLERK_SECRET_KEY=""
+    NEXT_PUBLIC_CLERK_SIGN_IN_URL="/sign-in"
+    NEXT_PUBLIC_CLERK_SIGN_UP_URL="/sign-up"
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL="/"
+    NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL="/"
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    # Cloudinary
+    CLOUDINARY_CLOUD_NAME=""
+    CLOUDINARY_API_KEY=""
+    CLOUDINARY_API_SECRET=""
+    ```
+
+4.  **Run database migrations:**
+
+    ```bash
+    npx prisma migrate dev
+    ```
+
+5.  **Run the development server:**
+
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Scripts
+
+*   `npm run dev`: Starts the development server.
+*   `npm run build`: Builds the application for production.
+*   `npm run start`: Starts a production server.
+*   `npm run lint`: Lints the codebase.
+
+## Technologies Used
+
+*   **Framework:** [Next.js](https://nextjs.org/)
+*   **ORM:** [Prisma](https://www.prisma.io/)
+*   **Authentication:** [Clerk](https://clerk.com/)
+*   **UI:** [Tailwind CSS](https://tailwindcss.com/), [Shadcn/ui](https://ui.shadcn.com/)
+*   **Rich Text Editor:** [React Quill](https://github.com/zenoamaro/react-quill)
+*   **Database:** [PostgreSQL](https://www.postgresql.org/)
+*   **Image Uploads:** [Cloudinary](https://cloudinary.com/)
+*   **Validation:** [Zod](https://zod.dev/)
