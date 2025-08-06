@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const HeroSection = () => {
   return (
@@ -26,20 +27,22 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row md:justify-start">
-            <Button size="lg" className="rounded-full px-8 py-6 text-lg">
-              Start Reading
-            </Button>
-            <Button
+            <Link href="/articles">
+              <Button size="lg" className="rounded-full px-8 py-6 text-lg">
+                Start Reading
+              </Button>
+            </Link>
+            {/* <Button
               variant="outline"
               size="lg"
               className="rounded-full px-8 py-6 text-lg dark:text-white"
             >
               Explore Topics
-            </Button>
+            </Button> */}
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 pt-8 text-white md:max-w-md">
+          {/* <div className="grid grid-cols-3 gap-4 pt-8 text-white md:max-w-md">
             <div className="space-y-2">
               <div className="text-2xl font-bold text-primary">1K+</div>
               <div className="text-sm text-gray-400">Published Articles</div>
@@ -52,7 +55,7 @@ const HeroSection = () => {
               <div className="text-2xl font-bold text-primary">10M+</div>
               <div className="text-sm text-gray-400">Monthly Readers</div>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="mt-12 flex-1 md:mt-0">
