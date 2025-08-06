@@ -7,9 +7,9 @@ import Link from 'next/link'
 
 const ITEMS_PER_PAGE = 3;
 
-const Page = async ({ searchParams }: {
-  searchParams?: { search?: string; page?: string }
-}) => {
+const Page = async (props: any) => {
+  const searchParams = props.searchParams as { search?: string; page?: string };
+  const ITEMS_PER_PAGE = 3;
   const searchText = searchParams?.search ?? '';
   const currentPage = Number(searchParams?.page ?? 1);
   const skip = (currentPage - 1) * ITEMS_PER_PAGE;
