@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String    @id @default(cuid())
+  clerkId  String    @unique
+  email    String    @unique
+  name     String
+  imageUrl String?
+  articles Article[]
+  comments Comment[]
+  likes    Like[]
+}
+
+model Article {
+  id            String @id @default(cuid())
+  title         String
+  content       String
+  category      String
+  featuredImage String
+
+  authorId      String
+  author        User   @relation(fields: [authorId], references: [id])
+
+  comments      Comment[]
+  likes         Like[]
+  createdAt     DateTime  @default(now())
+}
+
+model Comment {
+  id            String @id @default(cuid())
+  content       String
+
+  authorId      String
+  author        User   @relation(fields: [authorId], references: [id])
+
+  articleId     String
+  article       Article @relation(fields: [articleId], references: [id])
+
+  createdAt     DateTime @default(now())
+}
+
+model Like {
+  id            String  @id @default(cuid())
+
+  userId        String
+  user          User    @relation(fields: [userId] , references: [id])
+
+  articleId     String
+  article       Article @relation(fields: [articleId] , references: [id])
+
+  createdAt     DateTime @default(now())
+
+  @@unique([userId , articleId]) //ensure a user can like an article one
+}
