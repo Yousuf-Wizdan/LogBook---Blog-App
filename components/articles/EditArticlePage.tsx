@@ -6,7 +6,6 @@ import { Label } from '../ui/label'
 import dynamic from 'next/dynamic'
 import { Button } from '../ui/button'
 import 'react-quill-new/dist/quill.snow.css';
-import { createArticle } from '@/actions/create-article'
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false })
 import type { Article } from '../../app/generated/prisma'
 import Image from 'next/image'

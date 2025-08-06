@@ -5,18 +5,22 @@ import { Button } from '@/components/ui/button'
 import { fetchArticleByQuery } from '@/lib/query/fetch-article-by-query'
 import Link from 'next/link'
 
-const ITEMS_PER_PAGE = 3;
+interface PageProps {
+  searchParams?: Promise<{ 
+    search?: string; 
+    page?: string; 
+  }>;
+}
 
-const Page = async (props: any) => {
-  const searchParams = props.searchParams as { search?: string; page?: string };
-  const ITEMS_PER_PAGE = 3;
-  const searchText = searchParams?.search ?? '';
-  const currentPage = Number(searchParams?.page ?? 1);
-  const skip = (currentPage - 1) * ITEMS_PER_PAGE;
-  const take = ITEMS_PER_PAGE;
+const Page = async ({ searchParams }: PageProps) => {
+
+  const searchText = (await searchParams)?.search ?? '';
+  const currentPage = Number((await searchParams)?.page ?? 1);
+  const skip = (currentPage - 1) * 3;
+  const take = 3;
 
   const { articles, total } = await fetchArticleByQuery(searchText, skip, take);
-  const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(total / 3);
 
   return (
     <div className='min-h-screen bg-background'>

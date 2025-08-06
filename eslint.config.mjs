@@ -14,7 +14,7 @@ const eslintConfig = [
 
    // Ignore all files in src/generated/
   {
-    ignores: ["src/generated/**/*.{js,ts}"],
+    ignores: ["app/generated/**/*.{js,ts}"],
   },
 ];
 

@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Clock, FileText, MessageCircle, PlusCircle } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import RecentArticles from './RecentArticles'
+import { prisma } from '@/lib/prisma'
 
 const BlogDashboard = async () => {
 
