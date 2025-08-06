@@ -16,7 +16,7 @@ type SearchPageProps = {
 
 const ITEMS_PER_PAGE = 3;
 
-const page = async ({ searchParams }: SearchPageProps) => {
+const Searchpage = async ({ searchParams }: SearchPageProps) => {
 
   const searchText = (searchParams).search || '';
 
@@ -97,4 +97,4 @@ const page = async ({ searchParams }: SearchPageProps) => {
   )
 }
 
-export default page
+export default Searchpage
